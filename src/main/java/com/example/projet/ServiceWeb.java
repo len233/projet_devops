@@ -9,35 +9,27 @@ import java.util.ArrayList;
 @RestController
 public class ServiceWeb {
 
-    ArrayList<Car>cars = new ArrayList<Car>();
+    ArrayList<Car> cars = new ArrayList<>();
 
     public ServiceWeb() {
-        Car car = new Car("AA11BB", "ferrari", 2000);
-        cars.add(car);
-        car = new Car("BB22CC", "porsche", 1000);
-        cars.add(car);
-        car = new Car("CC33DD", "peugeot", 500);
-        cars.add(car);
-        car = new Car("DD44EE", "Lancia", 500);
-        cars.add(car);
+        cars.add(new Car("AA11BB", "ferrari", 2000));
+        cars.add(new Car("BB22CC", "porsche", 1000));
+        cars.add(new Car("CC33DD", "peugeot", 500));
+        cars.add(new Car("DD44EE", "Lancia", 500));
     }
-
 
     @GetMapping("/cars/{plateNumber}")
-    public Car disBonjour(@PathVariable("plateNumber") String plaque){
-        int i=0;
-        while(i<cars.size() && cars.get(i).getPlateNumber().equals(plaque)==false){
-            i++;
+    public Car getCarByPlate(@PathVariable("plateNumber") String plaque) {
+        for (Car car : cars) {
+            if (car.getPlateNumber().equalsIgnoreCase(plaque)) {
+                return car;
+            }
         }
-        if(i < cars.size()){
-            return cars.get(i);
-        } else {
-            return null;
-        }
+        return null;
     }
 
-    @GetMapping("/Car")
-    public ArrayList<Car> getAllCar() {
+    @GetMapping("/cars")
+    public ArrayList<Car> getAllCars() {
         return cars;
     }
 }
