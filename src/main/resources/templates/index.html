@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vente de Voitures</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>BuyCars</h1>
+        <input type="text" id="search" placeholder="Rechercher une voiture..." onkeyup="searchCar()">
+    </div>
+</header>
+
+<div id="car-container">
+    <div class="car-card" data-plate="AA11BB">
+        <div class="card-img" style="background-image: url('https://cdn.prod.website-files.com/66da09ee919601fcdef82d9a/677c0acdc8b03e4b5f0ef729_672b41dfeaf34f072710a973_New_Ferrari_V12_ext_02_red_media.jpeg');"></div>
+        <div class="card-info">
+            <h2>Ferrari</h2>
+            <p>Plaque: AA11BB</p>
+            <p>Année: 2000</p>
+            <button class="buy-btn">Réserver maintenant</button>
+        </div>
+    </div>
+    <div class="car-card" data-plate="BB22CC">
+        <div class="card-img" style="background-image: url('https://www.topgear-magazine.fr/wp-content/uploads/2020/08/porsche_taycan_2021_3.jpg');"></div>
+        <div class="card-info">
+            <h2>Porsche</h2>
+            <p>Plaque: BB22CC</p>
+            <p>Année: 1000</p>
+            <button class="buy-btn">Réserver maintenant</button>
+        </div>
+    </div>
+    <div class="car-card" data-plate="CC33DD">
+        <div class="card-img" style="background-image: url('https://images.caradisiac.com/logos/2/2/4/1/262241/S0-peugeot-3008-restyle-2020-nouvelle-gamme-les-prix-des-31-050-eur-185362.jpg');"></div>
+        <div class="card-info">
+            <h2>Peugeot</h2>git
+            <p>Plaque: CC33DD</p>
+            <p>Année: 500</p>
+            <button class="buy-btn">Réserver maintenant</button>
+        </div>
+    </div>
+    <div class="car-card" data-plate="DD44EE">
+        <div class="card-img" style="background-image: url('https://cdn.automobile-propre.com/uploads/2024/01/Nouvelle-Lancia-Ypsilon-e%CC%81lectrique.jpg');"></div>
+        <div class="card-info">
+            <h2>Lancia</h2>
+            <p>Plaque: DD44EE</p>
+            <p>Année: 500</p>
+            <button class="buy-btn">Réserver maintenant</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchCar() {
+        var input, filter, container, cards, plateNumber, i;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        container = document.getElementById("car-container");
+        cards = container.getElementsByClassName("car-card");
+
+        for (i = 0; i < cards.length; i++) {
+            plateNumber = cards[i].getAttribute("data-plate");
+            if (plateNumber.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>
