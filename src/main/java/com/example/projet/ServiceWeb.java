@@ -35,4 +35,9 @@ public class ServiceWeb {
             return null;
         }
     }
+
+    @GetMapping("/Car")
+    public ArrayList<Car> getAllCar() {
+        return cars;
+    }
 }
