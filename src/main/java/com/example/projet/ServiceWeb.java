@@ -1,4 +1,4 @@
-package com.example.devsecops2;
+package com.example.projet;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
